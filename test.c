@@ -24,7 +24,7 @@ void test_strcpy() {
 
 /*
 ** Main function that tests all functionality
-** TODO: Might shift testing to 'CUnit'- frameword depending on time left for project.
+** TODO: Might shift testing to 'CUnit'- framework depending on time left for project.
 */
 int main(void) {
     test_strcpy();
