@@ -4,46 +4,46 @@
 
 typedef struct size_aware_buffer_char {
     char *p;
-    int length;
+    unsigned int length;
 }sabs;
 
 typedef struct size_aware_buffer_double {
     double *p;
-    int length;
+    unsigned int length;
 }sabd;
 
 typedef struct size_aware_buffer_int {
     int *p;
-    int length;
+    unsigned int length;
 }sabi;
 
 typedef struct size_aware_buffer_float {
     float *p;
-    int length;
+    unsigned int length;
 }sabf;
 
-sabs* s_malloc(int size) {
+sabs* s_malloc(unsigned int size) {
     sabs *s = (sabs *)malloc(sizeof(sabs));
     s->p = malloc(size*sizeof(char));
     s->length = size;
     return s;
 }
 
-sabi* i_malloc(int size) {
+sabi* i_malloc(unsigned int size) {
     sabi *s = (sabi *)malloc(sizeof(sabi));
     s->p = malloc(size*sizeof(int));
     s->length = size;
     return s;
 }
 
-sabf* f_malloc(int size) {
+sabf* f_malloc(unsigned int size) {
     sabf *s = (sabf *)malloc(sizeof(sabf));
     s->p = malloc(size*sizeof(float));
     s->length = size;
     return s;
 }
 
-sabd* d_malloc(int size) {
+sabd* d_malloc(unsigned int size) {
     sabd *s = (sabd *)malloc(sizeof(sabd));
     s->p = malloc(size*sizeof(double));
     s->length = size;
