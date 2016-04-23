@@ -1,7 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <errno.h>
 #define _GNU_SOURCE
+
+#include <stdio.h>
 #include <dlfcn.h>
 
 void *global_array[5000][3];
@@ -17,8 +16,8 @@ void *malloc(size_t size)
         global_array[count][0] = real_malloc;
         global_array[count][1] = size;
         global_array[count][2] = 4;
-        printf(stdout, "%s %p", "I am", global_array[count][0]);
-        printf(stdout, "%s %d \n", "Count:", count);
+        fprintf(stderr, "%s %p", "I am", global_array[count][0]);
+        fprintf(stderr, "%s %d \n", "Count:", count);
         count ++;
 
     }

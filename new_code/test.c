@@ -7,7 +7,7 @@
 */
 
 void test_malloc(void) {
-    //int *a = (int *)malloc(1);
+    int *a = (int *)malloc(1);
     int *b = (int *)malloc(4);
     printf("%s\n","hi" );
 }
