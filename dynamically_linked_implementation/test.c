@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 /*
 ** Code to test strcpy is handled safely using the libsabo library
@@ -9,7 +9,6 @@
 void test_malloc(void) {
     int *a = (int *)malloc(1);
     int *b = (int *)malloc(4);
-    printf("%s\n","hi" );
 }
 
 
