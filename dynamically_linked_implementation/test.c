@@ -13,7 +13,7 @@ void test_malloc(void) {
 }
 
 /*
-** Code to test strcpy is handled safely using the sabo library
+** Code to test strcpy and strncpy is handled safely using the sabo library
 */
 void test_strcpy() {
     printf("\n=== Testing strcpy ===\n");
@@ -26,17 +26,12 @@ void test_strcpy() {
     // Define destination as a 5 length char array
     d = (char *)malloc(5*sizeof(char));
     strcpy(d, s); // This should not cause overflow
+    strcpy(&d[2], s);
+    
+    printf("\n=== Testing strncpy ===\n");
+    strncpy(d, s, 5);
 }
 
-
-void test_gets() {
-    printf("\n=== Testing gets ===\n");
-    char *s;
-    // Define source as a 10 length char array
-    s = (char *)malloc(5*sizeof(char));
-    gets(s); // This should not cause overflow
-
-}
 /*
 ** Main function that tests all functionality
 ** TODO: Might shift testing to 'CUnit'- framework depending on time left for project.
@@ -44,6 +39,5 @@ void test_gets() {
 int main(void) {
     test_malloc();
     test_strcpy();
-    test_gets();
     return 0;
 }
