@@ -68,11 +68,10 @@ void test_strcat() {
     s = (char *)malloc(10*sizeof(char));
     s = "56789asdsdsdsdsdsd\0";
 
-    d = (char *)malloc(5*sizeof(char));
+    d = (char *)malloc(10*sizeof(char));
     strcpy(d, "1234");
-
-    strcat(d,s); // This should not cause overflow
-
+    mstrcat(d,s); // This should not cause overflow
+    //printf(d);
 }
 
 

@@ -132,25 +132,29 @@ char* fgets(char* dest, int n, FILE *iop)
  
 }
 //--------
+
+
 char *strcat(char *dest, const char *src)
 {   
-    printf("I am here");
-    size_t max = isWritable(dest);
+    
+    int max = (int)isWritable(dest);
     if ( max == -1 ) {
         return NULL;
     }
     int i=0;
-    while (*dest!= '\0'){
-         *dest++ ;
+    char *temp = dest;
+    while (*temp!= '\0'){
+         *temp++ ;
          i++;
     }
     while (*src != '\0'&& i< max-1) {
-        *dest++ = *src++;
+        *temp++ = *src++;
         i++;
     } 
-    dest[max-1] = '\0';
+    temp[max-1] = '\0';    
     #ifdef DEBUG
     printf("%s\n",dest);
     #endif
     return dest;
 }
+
