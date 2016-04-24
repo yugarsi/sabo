@@ -7,9 +7,9 @@ Size aware buffer overflow prevention library in C
 
 #### Safe functions:
 + strcpy: DONE
-+ gets: y
++ gets: DONE
 + fgets:y
-+ strncpy: s
++ strncpy: DONE
 + sprintf:y
 + sprintf: -
 others...
