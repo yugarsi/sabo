@@ -46,12 +46,12 @@ void test_gets() {
 /*
 ** Code to test fgets is handled safely using the sabo library
 */
-void test_gets() {
+void test_fgets() {
     printf("\n=== Testing fgets ===\n");
     char *s;
     // Define source as a 10 length char array
     s = (char *)malloc(5*sizeof(char));
-    fgets(s, 10, stdout); // This should not cause overflow
+    fgets(s, 10, stdin); // This should not cause overflow
 }
 
 
@@ -64,5 +64,6 @@ int main(void) {
     test_malloc();
     test_strcpy();
     test_gets();
+    test_fgets();
     return 0;
 }
