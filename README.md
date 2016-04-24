@@ -10,6 +10,10 @@ Size aware buffer overflow prevention library in C
 + gets: DONE
 + fgets:DONE
 + strncpy: DONE
-+ sprintf:s
++ sprintf: DONE
 + strcat: DONE
+
+#### Endsuring backward compatibility
++ free: DONE
++ realloc: DONE
 others...
