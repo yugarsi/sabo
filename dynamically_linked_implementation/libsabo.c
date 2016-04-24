@@ -132,9 +132,9 @@ char* fgets(char* dest, int n, FILE *iop)
  
 }
 //--------
-
 char *strcat(char *dest, const char *src)
 {   
+    printf("I am here");
     size_t max = isWritable(dest);
     if ( max == -1 ) {
         return NULL;
