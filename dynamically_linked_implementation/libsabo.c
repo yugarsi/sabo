@@ -99,9 +99,6 @@ char* gets(char *src) {
     return src;
 }
 
-//--------------------------------------------------
-
-
 char* fgets(char* dest, int n, FILE *iop)
 {
     size_t max = isWritable(dest);
@@ -131,8 +128,6 @@ char* fgets(char* dest, int n, FILE *iop)
     return (c == EOF && cs == dest) ? NULL : dest;
  
 }
-//--------
-
 
 char *strcat(char *dest, const char *src)
 {   
@@ -156,5 +151,21 @@ char *strcat(char *dest, const char *src)
     printf("%s\n",dest);
     #endif
     return dest;
+}
+
+int sprintf(char *str, const char *format, ...) {
+    size_t n = isWritable(str);
+    if ( n == -1 ) {
+        return -1;
+    }
+    
+    va_list args;
+    va_start(args, format);
+    int r = snprintf(str, n, format, args);
+    va_end(args);
+#ifdef DEBUG
+    printf("%s\n",str);
+#endif
+    return r;
 }
 

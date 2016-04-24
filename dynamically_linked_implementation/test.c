@@ -46,10 +46,6 @@ void test_gets() {
 /*
 ** Code to test fgets is handled safely using the sabo library
 */
-
-
-
-
 void test_fgets() {
     printf("\n=== Testing fgets ===\n");
     char *s;
@@ -74,17 +70,31 @@ void test_strcat() {
     //printf(d);
 }
 
+/*
+** Sabo library's sprintf implementation that provides
+** security against buffer overflows.  The implementations ** still is subject to string formatiing attacks.
+*/
+void test_sprintf() {
+    printf("\n=== Testing sprintf ===\n");
+    char *s, *d;
+    // Define source as a 10 length char array
+    s = (char *)malloc(10*sizeof(char));
+    s = "hell0baby\0";
 
+    d = (char *)malloc(5*sizeof(char));
+    sprintf(d, "%s", s);
+}
 
 /*
 ** Main function that tests all functionality
 ** TODO: Might shift testing to 'CUnit'- framework depending on time left for project.
 */
 int main(void) {
-    // test_malloc();
-    // test_strcpy();
-    // test_gets();
-    // test_fgets();
+    test_malloc();
+    test_strcpy();
+    test_gets();
+    test_fgets();
     test_strcat();
+    test_sprintf();
     return 0;
 }
