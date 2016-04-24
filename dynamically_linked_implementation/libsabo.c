@@ -105,7 +105,7 @@ char* gets(char *src) {
 
 char *fgets(char *dst, int max, FILE *fp)
 {
-    size_t n = isWritable(buf);
+    size_t n = isWritable(dst);
     if ( n == -1 ) {
         return NULL;
     }
@@ -126,5 +126,9 @@ char *fgets(char *dst, int max, FILE *fp)
     *p = 0;
     if (p == dst || c == EOF)
         return NULL;
-    return (p);
+
+    #ifdef DEBUG
+    printf("%s\n",p);
+    #endif
+    return(p);
 }
