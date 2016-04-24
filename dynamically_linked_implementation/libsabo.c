@@ -66,3 +66,32 @@ char* strcpy(char *dest, char *src) {
 
     return dest;
 }
+
+char* gets(char *src) {
+    int n = isWritable(src);
+    if ( n == -1 ) {
+        return NULL;
+    }
+    int i=0,j;
+    char *ch = src;
+    while ((j = getchar ()) != '\n' && i<n-1) {
+        if (j == EOF) {
+            if (ch == s || !feof(stdin)) 
+                return NULL;
+            break;
+        }
+        *ch++ = j; // character is stored at address, and pointer is incremented 
+        i++;
+    }
+
+    *ch = '\0'; //add null terminating character
+    return s;
+    
+#ifdef DEBUG
+    printf("%s\n",src);
+#endif
+
+    return src;
+}
+
+
