@@ -70,7 +70,7 @@ void test_strcat() {
 
     d = (char *)malloc(10*sizeof(char));
     strcpy(d, "1234");
-    mstrcat(d,s); // This should not cause overflow
+    strcat(d,s); // This should not cause overflow
     //printf(d);
 }
 
