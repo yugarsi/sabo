@@ -102,34 +102,32 @@ char* gets(char *src) {
 //--------------------------------------------------
 
 
-
-char *fgets(char *dst, int max, FILE *fp)
+char* fgets(char* dest, int n, FILE *iop)
 {
-    size_t n = isWritable(dst);
+    size_t max = isWritable(dest);
     printf("size is :%d\n",(int)n);
-    if ( n == -1 ) {
+    if ( max == -1 ) {
         return NULL;
     }
-    if(n<max)
-        max=n;
-    int c;
-    char *p;
+    if(max<n)
+        n=max;
 
-    /* get max bytes or upto a newline */
+    register int c;
+    register char* cs;
+    cs = dest;
 
-    for (p = dst, max--; max > 0; max--) {
-        if ((c = getc(fp)) == EOF)
-            break;
-        *p++ = c;
-        if (c == '\n')
-            break;
+    while(--n > 0 && (c = getc(iop)) != EOF)
+    {
+    // put the input char into the current pointer position, then increment it
+    // if a newline entered, break
+    if((*cs++ = c) == '\n')
+        break;          
     }
-    *p = 0;
-    if (p == dst || c == EOF)
-        return NULL;
+    *cs = '\0';
 
     #ifdef DEBUG
-    printf("%s\n",p);
+    printf("%s\n",dest);
     #endif
-    return(p);
+    return (c == EOF && cs == dest) ? NULL : dest;
+ 
 }
