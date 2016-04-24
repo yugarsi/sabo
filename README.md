@@ -11,5 +11,5 @@ Size aware buffer overflow prevention library in C
 + fgets:DONE
 + strncpy: DONE
 + sprintf:s
-+ strcat: s
++ strcat: DONE
 others...
