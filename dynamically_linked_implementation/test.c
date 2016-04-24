@@ -33,11 +33,23 @@ void test_strcpy() {
 }
 
 /*
+** Code to test gets is handled safely using the sabo library
+*/
+void test_gets() {
+    printf("\n=== Testing gets ===\n");
+    char *s;
+    // Define source as a 10 length char array
+    s = (char *)malloc(5*sizeof(char));
+    gets(s); // This should not cause overflow
+}
+
+/*
 ** Main function that tests all functionality
 ** TODO: Might shift testing to 'CUnit'- framework depending on time left for project.
 */
 int main(void) {
     test_malloc();
     test_strcpy();
+    test_gets();
     return 0;
 }
