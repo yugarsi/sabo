@@ -45,6 +45,9 @@ size_t isWritable( void *p ) {
     return -1;
 }
 
+/* TODO: Might want to check if length 'n' is safely passed ** by the developer.  Might have to return a different value
+** than 'dest' to inform of this issue?
+*/
 char* strncpy(char *dest, const char *src, size_t n)
 {
     size_t i;
@@ -67,7 +70,7 @@ char* strncpy(char *dest, const char *src, size_t n)
 char* strcpy(char *dest, const char *src) {
     size_t n = isWritable(dest);
     if ( n == -1 ) {
-        return NULL;
+        return dest;
     }
     return strncpy(dest, src, n);
 }
@@ -153,6 +156,7 @@ char *strcat(char *dest, const char *src)
     return dest;
 }
 
+// TODO: Put in handlers for handling string format attacks.
 int sprintf(char *str, const char *format, ...) {
     size_t n = isWritable(str);
     if ( n == -1 ) {
