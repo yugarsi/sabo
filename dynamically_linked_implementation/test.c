@@ -49,6 +49,7 @@ void test_gets() {
 
 
 
+
 void test_fgets() {
     printf("\n=== Testing fgets ===\n");
     char *s;
@@ -56,6 +57,22 @@ void test_fgets() {
     s = (char *)malloc(5*sizeof(char));
     fgets(s, 10, stdin); // This should not cause overflow
     printf("%s",s);
+}
+
+
+
+void test_strcat() {
+    printf("\n=== Testing strcat ===\n");
+    char *s, *d;
+    // Define source as a 10 length char array
+    s = (char *)malloc(10*sizeof(char));
+    s = "56789asdsdsdsdsdsd\0";
+
+    d = (char *)malloc(5*sizeof(char));
+    strcpy(d, "1234");
+
+    my_strcat(d,s); // This should not cause overflow
+
 }
 
 
@@ -68,6 +85,7 @@ int main(void) {
     // test_malloc();
     // test_strcpy();
     // test_gets();
-    test_fgets();
+    // test_fgets();
+    test_strcat();
     return 0;
 }

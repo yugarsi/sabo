@@ -131,3 +131,26 @@ char* fgets(char* dest, int n, FILE *iop)
     return (c == EOF && cs == dest) ? NULL : dest;
  
 }
+//--------
+
+char *strcat(char *dest, const char *src)
+{   
+    size_t max = isWritable(dest);
+    if ( max == -1 ) {
+        return NULL;
+    }
+    int i=0;
+    while (*dest!= '\0'){
+         *dest++ ;
+         i++;
+    }
+    while (*src != '\0'&& i< max-1) {
+        *dest++ = *src++;
+        i++;
+    } 
+    dest[max-1] = '\0';
+    #ifdef DEBUG
+    printf("%s\n",dest);
+    #endif
+    return dest;
+}
