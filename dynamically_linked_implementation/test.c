@@ -7,8 +7,9 @@
 */
 
 void test_malloc(void) {
-    int *a = (int *)malloc(1);
-    int *b = (int *)malloc(4);
+    int *a = (int *)malloc(60);
+    int *b = (int *)malloc(60);
+    int *d = (int *)malloc(60);
 }
 
 
