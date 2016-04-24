@@ -44,6 +44,19 @@ void test_gets() {
 }
 
 /*
+** Code to test fgets is handled safely using the sabo library
+*/
+void test_gets() {
+    printf("\n=== Testing fgets ===\n");
+    char *s;
+    // Define source as a 10 length char array
+    s = (char *)malloc(5*sizeof(char));
+    fgets(s, 10, stdout); // This should not cause overflow
+}
+
+
+
+/*
 ** Main function that tests all functionality
 ** TODO: Might shift testing to 'CUnit'- framework depending on time left for project.
 */
