@@ -106,6 +106,7 @@ char* gets(char *src) {
 char *fgets(char *dst, int max, FILE *fp)
 {
     size_t n = isWritable(dst);
+    printf("size is :%d\n",(int)n);
     if ( n == -1 ) {
         return NULL;
     }
@@ -117,7 +118,7 @@ char *fgets(char *dst, int max, FILE *fp)
     /* get max bytes or upto a newline */
 
     for (p = dst, max--; max > 0; max--) {
-        if ((c = getc (fp)) == EOF)
+        if ((c = getc(fp)) == EOF)
             break;
         *p++ = c;
         if (c == '\n')
