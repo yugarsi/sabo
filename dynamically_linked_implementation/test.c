@@ -27,7 +27,7 @@ void test_strcpy() {
     d = (char *)malloc(5*sizeof(char));
     strcpy(d, s); // This should not cause overflow
     strcpy(&d[2], s);
-    
+
     printf("\n=== Testing strncpy ===\n");
     strncpy(d, s, 5);
 }
@@ -85,16 +85,39 @@ void test_sprintf() {
     sprintf(d, "%s", s);
 }
 
+void test_free() {
+    printf("\n=== Testing free ===\n");
+    char *s;
+    // Define source as a 10 length char array
+    s = (char *)malloc(10*sizeof(char));
+    free(s);
+}
+
+void test_realloc() {
+    printf("\n=== Testing realloc ===\n");
+    char *s;
+    // Define source as a 10 length char array
+    s = (char *)malloc(10*sizeof(char));
+    realloc(s, 20);
+}
+
 /*
 ** Main function that tests all functionality
 ** TODO: Might shift testing to 'CUnit'- framework depending on time left for project.
 */
 int main(void) {
+
+    // Keep test for 'free' and 'realloc' in the start since they print the entire
+    // global array.
+    test_free();
+    test_realloc();
+
     test_malloc();
     test_strcpy();
     test_gets();
     test_fgets();
     test_strcat();
     test_sprintf();
+
     return 0;
 }
