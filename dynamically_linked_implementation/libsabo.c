@@ -38,9 +38,31 @@ int isWritable( void *p ) {
     int i;
     for( i=0; i<count; i++) {
         if ( ga[i].ptr <= p && p <= ga[i].ptr + ga[i].size ) {
-            return 1;
+            return (ga[i].ptr + ga[i].size) - p;
         }
     }
-    return 0;
+    return -1;
 }
 
+char* strcpy(char *dest, char *src) {
+    int n = isWritable(dest);
+    if ( n == -1 ) {
+        return NULL;
+    }
+    
+    int i;
+    for (i = 0; i < n-1 && src[i] != '\0'; i++)
+        dest[i] = src[i];
+    for ( ; i < n ; i++)
+        dest[i] = '\0';
+
+    // This additional line addresses the vulnerability present in 'strncpy'
+    dest[n-1] = '\0';
+    
+#ifdef DEBUG
+    printf("%s\n",src);
+    printf("%s\n",dest);
+#endif
+
+    return dest;
+}

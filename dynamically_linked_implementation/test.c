@@ -1,18 +1,32 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 /*
-** Code to test strcpy is handled safely using the libsabo library
-** TODO: Might parameterize with source string (char *) input from main.  Optional.
+** Code to test malloc in libsabo library
 */
-
 void test_malloc(void) {
-    int *a = (int *)malloc(60);
-    int *b = (int *)malloc(60);
-    int *d = (int *)malloc(60);
+    printf("\n=== Testing malloc ===\n");
+    int *i = (int *)malloc(60*sizeof(int));
+    char *c = (char *)malloc(60*sizeof(char));
+    double *d = (double *)malloc(60*sizeof(double));
 }
 
+/*
+** Code to test strcpy is handled safely using the sabo library
+*/
+void test_strcpy() {
+    printf("\n=== Testing strcpy ===\n");
+    char *s, *d;
 
+    // Define source as a 10 length char array
+    s = (char *)malloc(10*sizeof(char));
+    s = "hell0baby\0";
+
+    // Define destination as a 5 length char array
+    d = (char *)malloc(5*sizeof(char));
+    strcpy(d, s); // This should not cause overflow
+}
 
 /*
 ** Main function that tests all functionality
@@ -20,6 +34,6 @@ void test_malloc(void) {
 */
 int main(void) {
     test_malloc();
+    test_strcpy();
     return 0;
-
 }
