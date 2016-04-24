@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <dlfcn.h>
+#include <string.h>
 #define MAX_BUFFERS 5000
 
 #define DEBUG
@@ -100,20 +101,12 @@ char* gets(char *src) {
 
 //--------------------------------------------------
 
-
-#include <stdio.h>
-#include <string.h>
-
 /*
  * Read at most n-1 characters from the given file.
  * Stop when a newline has been read, or the count runs out.
  * Return first argument, or NULL if no characters were read.
  */
-char *fgets(buf, n, fp)
-    char *buf;
-    register size_t n;
-    register FILE *fp;
-{   
+char *fgets(char *buf, size_t n, FILE *fp) {   
     size_t max = isWritable(buf);
     if ( max == -1 ) {
         return NULL;
@@ -169,7 +162,11 @@ char *fgets(buf, n, fp)
         n -= len;
     }
     *s = 0;
+
+#ifdef DEBUG
+    printf("%s\n",buf);
+#endif
     return (buf);
+
+
 }
-
-
