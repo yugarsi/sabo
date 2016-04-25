@@ -55,8 +55,6 @@ void test_fgets() {
     printf("%s",s);
 }
 
-
-
 void test_strcat() {
     printf("\n=== Testing strcat ===\n");
     char *s, *d;
@@ -98,7 +96,7 @@ void test_realloc() {
     char *s;
     // Define source as a 10 length char array
     s = (char *)malloc(10*sizeof(char));
-    realloc(s, 20);
+    s = realloc(s, 20);
 }
 
 /*
