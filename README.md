@@ -33,7 +33,7 @@ Size aware buffer overflow prevention library in C
 + sprintf: DONE
 + strcat: DONE
 
-#### Endsuring backward compatibility
+#### Ensuring backward compatibility
 + free: DONE
 + realloc: DONE
 
