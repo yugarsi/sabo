@@ -9,18 +9,18 @@ function usage {
   exit
 }
 
-while getopts "f:a:" opt; do                                                                                                                    
-  case $opt in                                                                                                                                     
-    f)                                                                                                                                             
+while getopts "f:a:" opt; do
+  case $opt in
+    f)
       test_file=$OPTARG
       ;;
     a)
       program_args=$OPTARG
       ;;
-    \?)                                                                                                                                            
-      usage                                                                                                                                        
-      ;;                                                                                                                                           
-  esac                                                                                                                                             
+    \?)
+      usage
+      ;;
+  esac
 done
 
 echo "$program_args"
