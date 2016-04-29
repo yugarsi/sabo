@@ -3,6 +3,7 @@
 *.ko
 *.obj
 *.elf
+*.aux
 
 # Precompiled Headers
 *.gch
@@ -30,3 +31,10 @@
 
 # Debug files
 *.dSYM/
+
+# Log files
+*.log
+
+# ZIP files
+*.gz
+*.zip
