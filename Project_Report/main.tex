@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper, 12pt]{article}
 \usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
 \usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
 \usepackage{fullpage} % changes the margin
@@ -27,7 +27,8 @@ Using the global array, we solve the problem of buffer overflow in `strcpy', `st
 \begin{lstlisting}[frame=single]
 /*
 ** @Input
-**     'p' starting address of writable memory sent from calling code
+**     'p' starting address of writable memory sent from calling
+**	code
 **
 ** @Output:
 **    -1 if 'p' is not present in the global array
@@ -44,7 +45,7 @@ size_t isWritable( void *p ) {
 }
 \end{lstlisting}
 \vspace{0.35em}
-The wrappers obtain the amount of writable memory starting at the address mentioned using the above method (if any).  With this information, they safely write the amount of data starting at 'p' that will not cause any buffer overflow.  Lastly they ensure that all these strings are null-terminated (since these are wrappers to string functions).
+The wrappers obtain the amount of writable memory starting at the address mentioned using the above method (if any).  With this information, they safely write the amount of data starting at `p' that will not cause any buffer overflow.  Lastly they ensure that all these strings are null-terminated (since these are wrappers to string functions).
 
 The `free' function removes the entry of the pointer mentioned from the global array and `free's the memory.  This ensures that an attacker cannot use an old entry in the global array to overwrite memory.
 
@@ -59,14 +60,15 @@ gcc -Wall  -shared -fPIC -o libsabo.so libsabo.c -ldl
 \end{lstlisting}
 \item Load our library when executing your program via LD\_PRELOAD
 \begin{lstlisting}
-LD_PRELOAD=<PATH_TO_GENERATED_LIBRARY>/libsabo.so ./a.out <program_args>
+LD_PRELOAD=<PATH_TO_GENERATED_LIBRARY>/libsabo.so
+./a.out <program_args>
 \end{lstlisting}
 \end{itemize}
 
 To further facilitate this process we have a shell code `runner.sh' that does the above mentioned steps.  An example of using this code follows:
 \begin{lstlisting}[frame=single]
-./runner.sh -f overflow_prevention/test3.c -a `` `python -c ``print
-`a'*499 +`b'*18 + ` ' + `37_aa ' + `755' " ' "
+./runner.sh -f overflow_prevention/test3.c -a `` `python -c
+``print `a'*499 +`b'*18 + ` ' + `37_aa ' + `755' " ' "
 \end{lstlisting}
 
 The code can be found on \href{https://github.com/yugarsi/sabo}{github} (made public after submission deadline).

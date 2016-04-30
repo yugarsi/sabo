@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #define MAX_BUFFERS 5000
 
-#define DEBUG
+//#define DEBUG
 
 typedef struct size_aware_buffers_info {
         void *ptr;
